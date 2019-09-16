@@ -2,10 +2,10 @@ package br.edu.senai.model.bean;
 
 public class Ordem {
     private Integer idOrdem;
-    private Integer funcionarioIdFuncionario;
-    private Integer clienteIdCliente;
-    private Integer pagamentoIdPagamento;
-    private Integer animalIdAnimal;
+    private Funcionario funcionarioOrdem;
+    private Cliente clienteOrdem;
+    private Animal animalOrdem;
+    private Integer indexPagamentoOrdem;
     private String statusPagamentoOrdem;
     private String statusOrdem;
 
@@ -17,37 +17,39 @@ public class Ordem {
         this.idOrdem = idOrdem;
     }
 
-    public Integer getFuncionarioIdFuncionario() {
-        return funcionarioIdFuncionario;
+    public Funcionario getFuncionarioOrdem() {
+        return funcionarioOrdem;
     }
 
-    public void setFuncionarioIdFuncionario(Integer funcionarioIdFuncionario) {
-        this.funcionarioIdFuncionario = funcionarioIdFuncionario;
+    public void setFuncionarioOrdem(Funcionario funcionarioOrdem) {
+        this.funcionarioOrdem = funcionarioOrdem;
     }
 
-    public Integer getClienteIdCliente() {
-        return clienteIdCliente;
+    public Cliente getClienteOrdem() {
+        return clienteOrdem;
     }
 
-    public void setClienteIdCliente(Integer clienteIdCliente) {
-        this.clienteIdCliente = clienteIdCliente;
+    public void setClienteOrdem(Cliente clienteOrdem) {
+        this.clienteOrdem = clienteOrdem;
     }
 
-    public Integer getPagamentoIdPagamento() {
-        return pagamentoIdPagamento;
+    public Integer getIndexPagamentoOrdem() {
+        return indexPagamentoOrdem;
     }
 
-    public void setPagamentoIdPagamento(Integer pagamentoIdPagamento) {
-        this.pagamentoIdPagamento = pagamentoIdPagamento;
+    public void setIndexPagamentoOrdem(Integer indexPagamentoOrdem) {
+        this.indexPagamentoOrdem = indexPagamentoOrdem;
     }
 
-    public Integer getAnimalIdAnimal() {
-        return animalIdAnimal;
+    public Animal getAnimalOrdem() {
+        return animalOrdem;
     }
 
-    public void setAnimalIdAnimal(Integer animalIdAnimal) {
-        this.animalIdAnimal = animalIdAnimal;
+    public void setAnimalOrdem(Animal animalOrdem) {
+        this.animalOrdem = animalOrdem;
     }
+
+    
 
     public String getStatusPagamentoOrdem() {
         return statusPagamentoOrdem;
