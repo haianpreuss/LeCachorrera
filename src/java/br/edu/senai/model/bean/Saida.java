@@ -2,10 +2,10 @@ package br.edu.senai.model.bean;
 
 public class Saida {
     private Integer idSaida;
-    private Integer funcionarioIdFuncionario;
+    private Funcionario funcionarioSaida;
     private String tipoSaida;
     private String dataHoraSaida;
-
+    
     public String getDataHoraSaida() {
         return dataHoraSaida;
     }
@@ -22,12 +22,12 @@ public class Saida {
         this.idSaida = idSaida;
     }
 
-    public Integer getFuncionarioIdFuncionario() {
-        return funcionarioIdFuncionario;
+    public Funcionario getFuncionarioSaida() {
+        return funcionarioSaida;
     }
 
-    public void setFuncionarioIdFuncionario(Integer funcionarioIdFuncionario) {
-        this.funcionarioIdFuncionario = funcionarioIdFuncionario;
+    public void setFuncionarioSaida(Funcionario funcionarioSaida) {
+        this.funcionarioSaida = funcionarioSaida;
     }
 
     public String getTipoSaida() {
