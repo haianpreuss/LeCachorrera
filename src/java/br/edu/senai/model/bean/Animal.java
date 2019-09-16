@@ -1,8 +1,8 @@
 package br.edu.senai.model.bean;
 
 public class Animal {
-    private Integer idCliente;
-    private Integer especieIdEspecie;
+    private Integer idAnimal;
+    private Cliente clienteAnimal;
     private String nomeAnimal;
     private String dataNascimentoAnimal;
     private String racaAnimal;
@@ -10,21 +10,30 @@ public class Animal {
     private String observacaoAnimal;
     private String sexoAnimal;
     private String dataCadastroAnimal;
-
-    public Integer getIdCliente() {
-        return idCliente;
+    private Integer indexEspecieAnimal;
+    
+    public Integer getIdAnimal() {
+        return idAnimal;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setIdAnimal(Integer idAnimal) {
+        this.idAnimal = idAnimal;
     }
 
-    public Integer getEspecieIdEspecie() {
-        return especieIdEspecie;
+    public Integer getIndexEspecieAnimal() {
+        return indexEspecieAnimal;
     }
 
-    public void setEspecieIdEspecie(Integer especieIdEspecie) {
-        this.especieIdEspecie = especieIdEspecie;
+    public void setIndexEspecieAnimal(Integer indexEspecieAnimal) {
+        this.indexEspecieAnimal = indexEspecieAnimal;
+    }
+
+    public Cliente getClienteAnimal() {
+        return clienteAnimal;
+    }
+
+    public void setClienteAnimal(Cliente clienteAnimal) {
+        this.clienteAnimal = clienteAnimal;
     }
 
     public String getNomeAnimal() {
