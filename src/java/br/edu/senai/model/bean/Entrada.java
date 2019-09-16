@@ -2,8 +2,8 @@ package br.edu.senai.model.bean;
 
 public class Entrada {
     private Integer idEntrada;
-    private Integer fornecedorIdFornecedor;
-    private Integer funcionarioIdFuncionario;
+    private Fornecedor fornecedorEntrada;
+    private Funcionario funcionarioEntrada;
     private Integer codigoBarraEntrada;
     private String dataHoraEntrada;
 
@@ -31,19 +31,19 @@ public class Entrada {
         this.idEntrada = idEntrada;
     }
 
-    public Integer getFornecedorIdFornecedor() {
-        return fornecedorIdFornecedor;
+    public Fornecedor getFornecedorEntrada() {
+        return fornecedorEntrada;
     }
 
-    public void setFornecedorIdFornecedor(Integer fornecedorIdFornecedor) {
-        this.fornecedorIdFornecedor = fornecedorIdFornecedor;
+    public void setFornecedorEntrada(Fornecedor fornecedorEntrada) {
+        this.fornecedorEntrada = fornecedorEntrada;
     }
 
-    public Integer getFuncionarioIdFuncionario() {
-        return funcionarioIdFuncionario;
+    public Funcionario getFuncionarioEntrada() {
+        return funcionarioEntrada;
     }
 
-    public void setFuncionarioIdFuncionario(Integer funcionarioIdFuncionario) {
-        this.funcionarioIdFuncionario = funcionarioIdFuncionario;
+    public void setFuncionarioEntrada(Funcionario funcionarioEntrada) {
+        this.funcionarioEntrada = funcionarioEntrada;
     }
 }
