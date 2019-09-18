@@ -6,4 +6,8 @@ public class Especie {
     public String[] getNomeEspecie() {
         return nomeEspecie;
     }
+    
+    public String getIndex(int id){
+        return nomeEspecie[id];
+    }
 }
