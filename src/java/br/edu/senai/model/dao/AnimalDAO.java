@@ -2,6 +2,7 @@ package br.edu.senai.model.dao;
 
 import br.edu.senai.connection.ConnectionFactory;
 import br.edu.senai.model.bean.Animal;
+import br.edu.senai.model.bean.Especie;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,12 +18,14 @@ public class AnimalDAO {
         connection = new ConnectionFactory();
     }
     
-    public void create(Animal animal){
+    public boolean daoInsertAnimal(Animal animal){
+        boolean result = false;
         PreparedStatement stmt = null;
+        Especie especie = new Especie();
         
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("CALL sp_insert_animal(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setObject(1, animal.getClienteAnimal());
             stmt.setString(2, animal.getNomeAnimal());
             stmt.setString(3, animal.getDataNascimentoAnimal());
@@ -31,17 +34,19 @@ public class AnimalDAO {
             stmt.setString(6, animal.getObservacaoAnimal());
             stmt.setString(7, animal.getSexoAnimal());
             stmt.setString(8, animal.getDataCadastroAnimal());
-            stmt.setInt(8, animal.getIndexEspecieAnimal());
+            stmt.setString(9, especie.getIndex(animal.getIndexEspecieAnimal()));
             stmt.executeUpdate();
             connection.confirm();
+            result = true;
         } catch (SQLException ex) {
-            Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);            
         } finally {
             connection.closeConnection(stmt);
         }
+        return result;
     }
     
-    public List<Animal> read(){
+    public List<Animal> daoReadCompleteAnimalList(){
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Animal> animais = new ArrayList<>();
