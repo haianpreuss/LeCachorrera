@@ -1,7 +1,6 @@
 package br.edu.senai.model.dao;
 
 import br.edu.senai.connection.ConnectionFactory;
-import br.edu.senai.model.bean.Animal;
 import br.edu.senai.model.bean.Categoria;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +18,7 @@ public class CategoriaDAO {
         connection = new ConnectionFactory();
     }
 
-    public void create(Categoria categoria) {
+    public void daoInsertCategoria(Categoria categoria) {
         PreparedStatement stmt = null;
 
         try {
@@ -35,7 +34,7 @@ public class CategoriaDAO {
         }
     }
 
-    public List<Categoria> read() {
+    public List<Categoria> daoReadCompleteCategoriaList() {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Categoria> categorias = new ArrayList<>();
@@ -58,7 +57,7 @@ public class CategoriaDAO {
         return categorias;
     }
 
-    public void update(Categoria categoria) {
+    public void daoUpdateCategoria(Categoria categoria) {
         PreparedStatement stmt = null;
 
         try {
@@ -74,7 +73,7 @@ public class CategoriaDAO {
         }
     }
 
-    public void delete(int id) {
+    public void daoDeleteCategoria(int id) {
         PreparedStatement stmt = null;
 
         try {
