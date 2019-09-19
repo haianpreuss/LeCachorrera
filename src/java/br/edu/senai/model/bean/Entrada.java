@@ -4,7 +4,7 @@ public class Entrada {
     private Integer idEntrada;
     private Fornecedor fornecedorEntrada;
     private Funcionario funcionarioEntrada;
-    private Integer codigoBarraEntrada;
+    private String codigoBarraEntrada;
     private String dataHoraEntrada;
 
     public String getDataHoraEntrada() {
@@ -15,11 +15,11 @@ public class Entrada {
         this.dataHoraEntrada = dataHoraEntrada;
     }
 
-    public Integer getCodigoBarraEntrada() {
+    public String getCodigoBarraEntrada() {
         return codigoBarraEntrada;
     }
 
-    public void setCodigoBarraEntrada(Integer codigoBarraEntrada) {
+    public void setCodigoBarraEntrada(String codigoBarraEntrada) {
         this.codigoBarraEntrada = codigoBarraEntrada;
     }
 
