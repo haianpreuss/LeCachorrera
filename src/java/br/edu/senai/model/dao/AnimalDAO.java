@@ -75,7 +75,7 @@ public class AnimalDAO {
         return animais;
     }
     
-    public void update(Animal animal){
+    public void daoUpdateAnimal(Animal animal){
         PreparedStatement stmt = null;
         
         try {
@@ -100,7 +100,7 @@ public class AnimalDAO {
         }
     }
     
-    public void delete(int id){
+    public void daoDeleteAnimal(int id){
         PreparedStatement stmt = null;
         
         try {
