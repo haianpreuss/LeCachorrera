@@ -1,0 +1,108 @@
+package br.edu.senai.model.dao;
+
+import br.edu.senai.connection.ConnectionFactory;
+import br.edu.senai.model.bean.Cliente;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ClienteDAO {
+    ConnectionFactory connection;
+
+    public ClienteDAO() {
+        connection = new ConnectionFactory();
+    }
+
+    public void daoInsertCliente(Cliente cliente) {
+        PreparedStatement stmt = null;
+
+        try {
+            connection.openConnection();
+            stmt = connection.getConection().prepareStatement("");
+            stmt.setString(1, cliente.getNomeCliente());
+            stmt.setString(2, cliente.getDocumentoPessoa());
+            stmt.setString(3, cliente.getTelefonePessoa());
+            stmt.setString(4, cliente.getEmailPessoa());
+            stmt.setString(5, cliente.getTipoCliente());
+            stmt.setString(6, cliente.getSexoCliente());
+            stmt.setString(7, cliente.getDataCadastro());
+            stmt.executeUpdate();
+            connection.confirm();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            connection.closeConnection(stmt);
+        }
+    }
+
+    public List<Cliente> daoReadCompleteClienteList() {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Cliente> clientes = new ArrayList<>();
+
+        try {
+            connection.openConnection();
+            stmt = connection.getConection().prepareStatement("");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setIdPessoa(rs.getInt("idcliente"));
+                cliente.setNomeCliente(rs.getString("nome_cliente"));
+                cliente.setDocumentoPessoa(rs.getString("documento_cliente"));
+                cliente.setTelefonePessoa(rs.getString("telefone_cliente"));
+                cliente.setEmailPessoa(rs.getString("telefone_cliente"));
+                cliente.setTipoCliente(rs.getString("tipo_cliente"));
+                cliente.setSexoCliente(rs.getString("sexo_cliente"));
+                cliente.setDataCadastro(rs.getString("data_cadastro_cliente"));
+                clientes.add(cliente);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            connection.closeConnection(stmt, rs);
+        }
+        return clientes;
+    }
+
+    public void daoUpdateCliente(Cliente cliente) {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = connection.getConection().prepareStatement("");
+            stmt.setInt(1, cliente.getIdPessoa());
+            stmt.setString(2, cliente.getNomeCliente());
+            stmt.setString(3, cliente.getDocumentoPessoa());
+            stmt.setString(4, cliente.getTelefonePessoa());
+            stmt.setString(5, cliente.getEmailPessoa());
+            stmt.setString(6, cliente.getTipoCliente());
+            stmt.setString(7, cliente.getSexoCliente());
+            stmt.setString(8, cliente.getDataCadastro());
+            stmt.executeUpdate();
+            connection.confirm();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            connection.closeConnection(stmt);
+        }
+    }
+
+    public void daoDeleteCliente(int id) {
+        PreparedStatement stmt = null;
+
+        try {
+            connection.openConnection();
+            stmt = connection.getConection().prepareStatement("");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+            connection.confirm();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            connection.closeConnection(stmt);
+        }
+    }
+}
