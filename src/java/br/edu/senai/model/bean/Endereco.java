@@ -8,6 +8,8 @@ public class Endereco {
     private String bairroEndereco;
     private String logradouroEndereco;
     private String numeroEndereco;
+    private String complementoEndereco;
+    private String referenciaEndereco;
 
     public Integer getIdEndereco() {
         return idEndereco;
@@ -63,5 +65,21 @@ public class Endereco {
 
     public void setNumeroEndereco(String numeroEndereco) {
         this.numeroEndereco = numeroEndereco;
+    }
+
+    public String getComplementoEndereco() {
+        return complementoEndereco;
+    }
+
+    public void setComplementoEndereco(String complementoEndereco) {
+        this.complementoEndereco = complementoEndereco;
+    }
+
+    public String getReferenciaEndereco() {
+        return referenciaEndereco;
+    }
+
+    public void setReferenciaEndereco(String referenciaEndereco) {
+        this.referenciaEndereco = referenciaEndereco;
     }
 }
