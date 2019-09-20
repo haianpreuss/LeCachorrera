@@ -18,7 +18,7 @@ public class CategoriaDAO {
         connection = new ConnectionFactory();
     }
 
-    public void daoInsertCategoria(Categoria categoria) {
+    public boolean daoInsertCategoria(Categoria categoria) {
         PreparedStatement stmt = null;
 
         try {
@@ -27,8 +27,10 @@ public class CategoriaDAO {
             stmt.setString(1, categoria.getDescricaoCategoria());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
@@ -57,7 +59,7 @@ public class CategoriaDAO {
         return categorias;
     }
 
-    public void daoUpdateCategoria(Categoria categoria) {
+    public boolean daoUpdateCategoria(Categoria categoria) {
         PreparedStatement stmt = null;
 
         try {
@@ -66,14 +68,16 @@ public class CategoriaDAO {
             stmt.setString(2, categoria.getDescricaoCategoria());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
     }
 
-    public void daoDeleteCategoria(int id) {
+    public boolean daoDeleteCategoria(int id) {
         PreparedStatement stmt = null;
 
         try {
@@ -82,8 +86,10 @@ public class CategoriaDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
