@@ -19,7 +19,6 @@ public class AnimalDAO {
     }
     
     public boolean daoInsertAnimal(Animal animal){
-        boolean result = false;
         PreparedStatement stmt = null;
         Especie especie = new Especie();
         
@@ -37,13 +36,13 @@ public class AnimalDAO {
             stmt.setString(9, especie.getIndex(animal.getIndexEspecieAnimal()));
             stmt.executeUpdate();
             connection.confirm();
-            result = true;
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);            
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
-        return result;
     }
     
     public List<Animal> daoReadCompleteAnimalList(){
@@ -75,7 +74,7 @@ public class AnimalDAO {
         return animais;
     }
     
-    public void daoUpdateAnimal(Animal animal){
+    public boolean daoUpdateAnimal(Animal animal){
         PreparedStatement stmt = null;
         
         try {
@@ -93,14 +92,16 @@ public class AnimalDAO {
             stmt.setInt(10, animal.getIndexEspecieAnimal());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
     }
     
-    public void daoDeleteAnimal(int id){
+    public boolean daoDeleteAnimal(int id){
         PreparedStatement stmt = null;
         
         try {
@@ -109,8 +110,10 @@ public class AnimalDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
