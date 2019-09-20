@@ -17,7 +17,7 @@ public class ProdutoDAO {
         connection = new ConnectionFactory();
     }
 
-    public void daoInsertProduto(Produto produto) {
+    public boolean daoInsertProduto(Produto produto) {
         PreparedStatement stmt = null;
 
         try {
@@ -28,8 +28,10 @@ public class ProdutoDAO {
             stmt.setInt(3, produto.getCategoriaIdCategoria());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
@@ -61,7 +63,7 @@ public class ProdutoDAO {
         return produtos;
     }
 
-    public void daoUpdateProduto(Produto produto) {
+    public boolean daoUpdateProduto(Produto produto) {
         PreparedStatement stmt = null;
 
         try {
@@ -72,14 +74,16 @@ public class ProdutoDAO {
             stmt.setInt(4, produto.getCategoriaIdCategoria());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
     }
 
-    public void daoDeleteProduto(int id) {
+    public boolean daoDeleteProduto(int id) {
         PreparedStatement stmt = null;
 
         try {
@@ -88,8 +92,10 @@ public class ProdutoDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }

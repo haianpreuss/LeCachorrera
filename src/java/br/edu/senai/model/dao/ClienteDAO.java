@@ -17,7 +17,7 @@ public class ClienteDAO {
         connection = new ConnectionFactory();
     }
 
-    public void daoInsertCliente(Cliente cliente) {
+    public boolean daoInsertCliente(Cliente cliente) {
         PreparedStatement stmt = null;
 
         try {
@@ -32,8 +32,10 @@ public class ClienteDAO {
             stmt.setString(7, cliente.getDataCadastro());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
@@ -68,7 +70,7 @@ public class ClienteDAO {
         return clientes;
     }
 
-    public void daoUpdateCliente(Cliente cliente) {
+    public boolean daoUpdateCliente(Cliente cliente) {
         PreparedStatement stmt = null;
 
         try {
@@ -83,14 +85,16 @@ public class ClienteDAO {
             stmt.setString(8, cliente.getDataCadastro());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
     }
 
-    public void daoDeleteCliente(int id) {
+    public boolean daoDeleteCliente(int id) {
         PreparedStatement stmt = null;
 
         try {
@@ -99,8 +103,10 @@ public class ClienteDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }

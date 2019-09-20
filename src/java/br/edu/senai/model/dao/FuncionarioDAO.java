@@ -17,7 +17,7 @@ public class FuncionarioDAO {
         connection = new ConnectionFactory();
     }
 
-    public void daoInsertFuncionario(Funcionario funcionario) {
+    public boolean daoInsertFuncionario(Funcionario funcionario) {
         PreparedStatement stmt = null;
 
         try {
@@ -32,8 +32,10 @@ public class FuncionarioDAO {
             stmt.setString(7, funcionario.getSexoFuncionario());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
@@ -68,7 +70,7 @@ public class FuncionarioDAO {
         return funcionarios;
     }
 
-    public void daoUpdateFuncionario(Funcionario funcionario) {
+    public boolean daoUpdateFuncionario(Funcionario funcionario) {
         PreparedStatement stmt = null;
 
         try {
@@ -83,14 +85,16 @@ public class FuncionarioDAO {
             stmt.setString(8, funcionario.getSexoFuncionario());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
     }
 
-    public void daoDeleteFuncionario(int id) {
+    public boolean daoDeleteFuncionario(int id) {
         PreparedStatement stmt = null;
 
         try {
@@ -99,8 +103,10 @@ public class FuncionarioDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }

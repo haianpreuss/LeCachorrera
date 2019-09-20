@@ -17,7 +17,7 @@ public class FornecedorDAO {
         connection = new ConnectionFactory();
     }
 
-    public void daoInsertFornecedor(Fornecedor fornecedor) {
+    public boolean daoInsertFornecedor(Fornecedor fornecedor) {
         PreparedStatement stmt = null;
 
         try {
@@ -32,8 +32,10 @@ public class FornecedorDAO {
             stmt.setString(7, fornecedor.getDataCadastroFornecedor());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
@@ -68,7 +70,7 @@ public class FornecedorDAO {
         return fornecedores;
     }
 
-    public void daoUpdateFornecedor(Fornecedor fornecedor) {
+    public boolean daoUpdateFornecedor(Fornecedor fornecedor) {
         PreparedStatement stmt = null;
 
         try {
@@ -83,14 +85,16 @@ public class FornecedorDAO {
             stmt.setString(8, fornecedor.getDataCadastroFornecedor());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
     }
 
-    public void daoDeleteFornecedor(int id) {
+    public boolean daoDeleteFornecedor(int id) {
         PreparedStatement stmt = null;
 
         try {
@@ -99,8 +103,10 @@ public class FornecedorDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }

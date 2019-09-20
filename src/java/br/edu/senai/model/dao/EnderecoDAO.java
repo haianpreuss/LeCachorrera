@@ -17,7 +17,7 @@ public class EnderecoDAO {
         connection = new ConnectionFactory();
     }
 
-    public void daoInsertEndereco(Endereco endereco) {
+    public boolean daoInsertEndereco(Endereco endereco) {
         PreparedStatement stmt = null;
 
         try {
@@ -33,8 +33,10 @@ public class EnderecoDAO {
             stmt.setString(8, endereco.getReferenciaEndereco());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
@@ -70,7 +72,7 @@ public class EnderecoDAO {
         return enderecos;
     }
 
-    public void daoUpdateEndereco(Endereco endereco) {
+    public boolean daoUpdateEndereco(Endereco endereco) {
         PreparedStatement stmt = null;
 
         try {
@@ -85,14 +87,16 @@ public class EnderecoDAO {
             stmt.setString(8, endereco.getReferenciaEndereco());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
     }
 
-    public void daoDeleteEndereco(int id) {
+    public boolean daoDeleteEndereco(int id) {
         PreparedStatement stmt = null;
 
         try {
@@ -101,8 +105,10 @@ public class EnderecoDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }

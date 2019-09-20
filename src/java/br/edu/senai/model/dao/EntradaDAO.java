@@ -19,7 +19,7 @@ public class EntradaDAO {
         connection = new ConnectionFactory();
     }
 
-    public void daoInsertEntrada(Entrada entrada) {
+    public boolean daoInsertEntrada(Entrada entrada) {
         PreparedStatement stmt = null;
 
         try {
@@ -30,8 +30,10 @@ public class EntradaDAO {
             stmt.setObject(3, entrada.getFornecedorEntrada());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(EntradaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
@@ -63,7 +65,7 @@ public class EntradaDAO {
         return entradas;
     }
 
-    public void daoUpdateEntrada(Entrada entrada) {
+    public boolean daoUpdateEntrada(Entrada entrada) {
         PreparedStatement stmt = null;
 
         try {
@@ -75,14 +77,16 @@ public class EntradaDAO {
             stmt.setObject(5, entrada.getFornecedorEntrada());
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(EntradaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
     }
 
-    public void daoDeleteEntrada(int id) {
+    public boolean daoDeleteEntrada(int id) {
         PreparedStatement stmt = null;
 
         try {
@@ -91,8 +95,10 @@ public class EntradaDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             connection.confirm();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(EntradaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             connection.closeConnection(stmt);
         }
