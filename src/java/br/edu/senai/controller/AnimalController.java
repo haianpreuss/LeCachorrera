@@ -10,12 +10,8 @@ public class AnimalController {
     
     //INSERT
     public boolean controllerInsertAnimal(Animal esseAnimal){
-        boolean result = false;
         //TODO requisitos
-        if(animalDao.daoInsertAnimal(esseAnimal)){                        
-            result = true;
-        }
-        return result;
+        return animalDao.daoInsertAnimal(esseAnimal);
     }
 
     //READ
@@ -24,6 +20,16 @@ public class AnimalController {
         return null;
     }
     
+    //UPDATE
+    public boolean controllerUpdateAnimal(Animal animal){
+        //TODO requisitos
+        return animalDao.daoUpdateAnimal(animal);
+    }
     
+    //DELETE
+    public boolean controllerDeleteAnimal(int id){
+        //TODO requisitos
+        return animalDao.daoDeleteAnimal(id);
+    }
     
 }
