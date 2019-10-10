@@ -24,7 +24,7 @@ public class EntradaDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("CALL sp_insert_entrada(?,?,?)");
             stmt.setString(1, entrada.getCodigoBarraEntrada());
             stmt.setObject(2, entrada.getFuncionarioEntrada());
             stmt.setObject(3, entrada.getFornecedorEntrada());

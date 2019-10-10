@@ -22,14 +22,13 @@ public class ClienteDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("CALL sp_inserir_cliente(?,?,?,?,?,?)");
             stmt.setString(1, cliente.getNomeCliente());
             stmt.setString(2, cliente.getDocumentoPessoa());
             stmt.setString(3, cliente.getTelefonePessoa());
             stmt.setString(4, cliente.getEmailPessoa());
             stmt.setString(5, cliente.getTipoCliente());
             stmt.setString(6, cliente.getSexoCliente());
-            stmt.setString(7, cliente.getDataCadastro());
             stmt.executeUpdate();
             connection.confirm();
             return true;
@@ -48,7 +47,7 @@ public class ClienteDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT FROM cliente");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Cliente cliente = new Cliente();

@@ -22,14 +22,13 @@ public class FornecedorDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("CALL sp_inserir_fornecedor(?,?,?,?,?,?)");
             stmt.setString(1, fornecedor.getRazaoSocialFornecedor());
             stmt.setString(2, fornecedor.getNomeFantasiaFornecedor());
             stmt.setString(3, fornecedor.getDocumentoPessoa());
             stmt.setString(4, fornecedor.getIeFornecedor());
             stmt.setString(5, fornecedor.getTelefonePessoa());
             stmt.setString(6, fornecedor.getEmailPessoa());
-            stmt.setString(7, fornecedor.getDataCadastroFornecedor());
             stmt.executeUpdate();
             connection.confirm();
             return true;

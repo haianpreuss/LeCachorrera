@@ -23,8 +23,7 @@ public class SaidaDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
-            stmt.setString(1, saida.getDataHoraSaida());
+            stmt = connection.getConection().prepareStatement("CALL sp_insert_saida(?,?)");
             stmt.setString(2, saida.getTipoSaida());
             stmt.setObject(3, saida.getFuncionarioSaida());
             stmt.executeUpdate();

@@ -22,7 +22,7 @@ public class FuncionarioDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("CALL sp_inserir_funcionario(?,?,?,?,?,?,?)");
             stmt.setString(1, funcionario.getNomeFuncionario());
             stmt.setString(2, funcionario.getDocumentoPessoa());
             stmt.setString(3, funcionario.getTelefonePessoa());

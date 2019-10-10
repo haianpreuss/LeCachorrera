@@ -22,7 +22,7 @@ public class ProdutoDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("CALL sp_inserir_produto(?,?,?)");
             stmt.setString(1, produto.getDescricaoProduto());
             stmt.setFloat(2, produto.getValorProduto());
             stmt.setInt(3, produto.getCategoriaIdCategoria());
