@@ -23,15 +23,14 @@ public class EnderecoDAO {
         try {
             connection.openConnection();
             stmt = connection.getConection().prepareStatement("CALL sp_insert_endereco(?,?,?,?,?,?,?,?,?)");
-            stmt.setObject(1, endereco.getClienteEndereco());
-            stmt.setString(2, endereco.getCepEndereco());
-            stmt.setString(3, endereco.getUfEndereco());
-            stmt.setString(4, endereco.getCidadeEndereco());
-            stmt.setString(5, endereco.getBairroEndereco());
-            stmt.setString(6, endereco.getLogradouroEndereco());
-            stmt.setString(7, endereco.getNumeroEndereco());
-            stmt.setString(8, endereco.getComplementoEndereco());
-            stmt.setString(9, endereco.getReferenciaEndereco());
+            stmt.setString(1, endereco.getCepEndereco());
+            stmt.setString(2, endereco.getUfEndereco());
+            stmt.setString(3, endereco.getCidadeEndereco());
+            stmt.setString(4, endereco.getBairroEndereco());
+            stmt.setString(5, endereco.getLogradouroEndereco());
+            stmt.setString(6, endereco.getNumeroEndereco());
+            stmt.setString(7, endereco.getComplementoEndereco());
+            stmt.setString(8, endereco.getReferenciaEndereco());
             stmt.executeUpdate();
             connection.confirm();
             return true;
