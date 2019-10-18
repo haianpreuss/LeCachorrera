@@ -5,6 +5,15 @@ public class Funcionario extends Pessoa{
     private String setorFuncionario;
     private String cargoFuncionario;
     private String sexoFuncionario;
+    private Integer senhaFuncionario;
+
+    public Integer getSenhaFuncionario() {
+        return senhaFuncionario;
+    }
+
+    public void setSenhaFuncionario(Integer senhaFuncionario) {
+        this.senhaFuncionario = senhaFuncionario;
+    }
 
     public String getNomeFuncionario() {
         return nomeFuncionario;
