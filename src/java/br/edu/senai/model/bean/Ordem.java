@@ -6,8 +6,8 @@ public class Ordem {
     private Cliente clienteOrdem;
     private Animal animalOrdem;
     private Integer indexPagamentoOrdem;
-    private String statusPagamentoOrdem;
-    private String statusOrdem;
+    private Boolean statusPagamentoOrdem;
+    private Boolean statusOrdem;
 
     public Integer getIdOrdem() {
         return idOrdem;
@@ -49,21 +49,19 @@ public class Ordem {
         this.animalOrdem = animalOrdem;
     }
 
-    
-
-    public String getStatusPagamentoOrdem() {
+    public Boolean getStatusPagamentoOrdem() {
         return statusPagamentoOrdem;
     }
 
-    public void setStatusPagamentoOrdem(String statusPagamentoOrdem) {
+    public void setStatusPagamentoOrdem(Boolean statusPagamentoOrdem) {
         this.statusPagamentoOrdem = statusPagamentoOrdem;
     }
 
-    public String getStatusOrdem() {
+    public Boolean getStatusOrdem() {
         return statusOrdem;
     }
 
-    public void setStatusOrdem(String statusOrdem) {
+    public void setStatusOrdem(Boolean statusOrdem) {
         this.statusOrdem = statusOrdem;
     }
 }
