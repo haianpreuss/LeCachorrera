@@ -16,7 +16,7 @@ public class ProdutoController {
     //READ
     public List<Produto> controllerReadComplete(){
         //TODO requisitos
-        return null;
+        return produtoDao.daoReadCompleteProdutoList();
     }
     
     //UPDATE
