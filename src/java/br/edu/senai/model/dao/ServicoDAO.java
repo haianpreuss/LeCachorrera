@@ -62,4 +62,41 @@ public class ServicoDAO {
         }
         return servicos;
     }
+    
+    public boolean daoUpdateServico(Servico servico){
+        PreparedStatement stmt = null;
+        
+        try {
+            connection.openConnection();
+            stmt = connection.getConection().prepareStatement("");
+            stmt.setString(1, servico.getDescricaoServico());
+            stmt.setFloat(2, servico.getValorServico());
+            stmt.executeUpdate();
+            connection.confirm();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } finally {
+            connection.closeConnection(stmt);
+        }
+    }
+    
+    public boolean daoDeleteServico(int id){
+        PreparedStatement stmt = null;
+        
+        try {
+            connection.openConnection();
+            stmt = connection.getConection().prepareStatement("");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+            connection.confirm();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } finally {
+            connection.closeConnection(stmt);
+        }
+    }
 }
