@@ -15,8 +15,7 @@ public class EntradaController {
     
     //READ
     public List<Entrada> controllerReadCompleteEntrada(){
-        //TODO requisitos
-        return null;
+        return entradaDao.daoReadCompleteEntradaList();
     }
     
     //UPDATE

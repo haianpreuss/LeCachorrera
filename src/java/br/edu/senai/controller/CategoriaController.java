@@ -15,8 +15,7 @@ public class CategoriaController {
     
     //READ
     public List<Categoria> controllerReadCompleteCategoria(){
-        //TODO requisitos
-        return null;
+        return categoriaDao.daoReadCompleteCategoriaList();
     }
     
     //UPDATE

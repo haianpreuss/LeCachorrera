@@ -14,9 +14,8 @@ public class ClienteController {
     }
     
     //READ
-    public List<Cliente> controllerReadCompleteCliente(){
-        //TODO requisitos
-        return null;
+    public List<Cliente> controllerReadCompleteClienteList(){
+        return clienteDao.daoReadCompleteClienteList();
     }
     
     //UPDATE

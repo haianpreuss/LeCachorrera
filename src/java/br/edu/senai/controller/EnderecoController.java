@@ -15,8 +15,7 @@ public class EnderecoController {
     
     //READ
     public List<Endereco> controllerReadCompleteEndereco(){
-        //TODO requisitos
-        return null;
+        return enderecoDao.daoReadCompleteEnderecoList();
     }
     
     //UPDATE
