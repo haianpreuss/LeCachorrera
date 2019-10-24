@@ -49,7 +49,7 @@ public class EnderecoDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM endereco");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Endereco endereco = new Endereco();

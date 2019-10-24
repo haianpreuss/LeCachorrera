@@ -47,7 +47,7 @@ public class ClienteDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("SELECT FROM cliente");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM cliente");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Cliente cliente = new Cliente();
@@ -55,10 +55,11 @@ public class ClienteDAO {
                 cliente.setNomeCliente(rs.getString("nome_cliente"));
                 cliente.setDocumentoPessoa(rs.getString("documento_cliente"));
                 cliente.setTelefonePessoa(rs.getString("telefone_cliente"));
-                cliente.setEmailPessoa(rs.getString("telefone_cliente"));
+                cliente.setEmailPessoa(rs.getString("email_cliente"));
                 cliente.setTipoCliente(rs.getString("tipo_cliente"));
                 cliente.setSexoCliente(rs.getString("sexo_cliente"));
                 cliente.setDataCadastro(rs.getString("data_cadastro_cliente"));
+                cliente.setEnderecoIdEndereco(rs.getInt("endereco_idendereco"));
                 clientes.add(cliente);
             }
         } catch (SQLException ex) {

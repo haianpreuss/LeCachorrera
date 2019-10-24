@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EntradaDAO {
+
     ConnectionFactory connection;
 
     public EntradaDAO() {
@@ -46,15 +47,22 @@ public class EntradaDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM entrada");
             rs = stmt.executeQuery();
             while (rs.next()) {
+                Funcionario funcionario = new Funcionario();
+                Fornecedor fornecedor = new Fornecedor();
                 Entrada entrada = new Entrada();
                 entrada.setIdEntrada(rs.getInt("identrada"));
                 entrada.setDataHoraEntrada(rs.getString("data_hora_entrada"));
                 entrada.setCodigoBarraEntrada(rs.getString("codigo_barra_entrada"));
-                entrada.setFuncionarioEntrada((Funcionario) rs.getObject("funcionario_idfuncionario"));
-                entrada.setFornecedorEntrada((Fornecedor) rs.getObject("fornecedor_idfornecedor"));
+                fornecedor.setIdPessoa(rs.getInt("fornecedor_idfornecedor"));
+                funcionario.setIdPessoa(rs.getInt("funcionario_idfuncionario"));
+
+                entrada.setFornecedorEntrada(fornecedor);
+                entrada.setFuncionarioEntrada(funcionario);
+                //entrada.setFuncionarioEntrada((Funcionario) rs.getObject("funcionario_idfuncionario"));
+                //entrada.setFornecedorEntrada((Fornecedor) rs.getObject("fornecedor_idfornecedor"));
                 entradas.add(entrada);
             }
         } catch (SQLException ex) {

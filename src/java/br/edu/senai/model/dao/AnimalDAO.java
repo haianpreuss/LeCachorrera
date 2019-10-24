@@ -2,7 +2,7 @@ package br.edu.senai.model.dao;
 
 import br.edu.senai.connection.ConnectionFactory;
 import br.edu.senai.model.bean.Animal;
-import br.edu.senai.model.bean.Especie;
+import br.edu.senai.model.bean.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,12 +20,11 @@ public class AnimalDAO {
     
     public boolean daoInsertAnimal(Animal animal){
         PreparedStatement stmt = null;
-        Especie especie = new Especie();
         
         try {
             connection.openConnection();
             stmt = connection.getConection().prepareStatement("CALL sp_insert_animal(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            stmt.setObject(1, animal.getClienteAnimal());
+            stmt.setInt(1, animal.getClienteAnimal().getIdPessoa());
             stmt.setString(2, animal.getNomeAnimal());
             stmt.setString(3, animal.getDataNascimentoAnimal());
             stmt.setString(4, animal.getRacaAnimal());
@@ -33,7 +32,7 @@ public class AnimalDAO {
             stmt.setString(6, animal.getObservacaoAnimal());
             stmt.setString(7, animal.getSexoAnimal());
             stmt.setString(8, animal.getDataCadastroAnimal());
-            stmt.setString(9, especie.getIndex(animal.getIndexEspecieAnimal()));
+            stmt.setString(9, animal.getEspecieAnimal());
             stmt.executeUpdate();
             connection.confirm();
             return true;
@@ -52,13 +51,19 @@ public class AnimalDAO {
         
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM animal");
             rs = stmt.executeQuery();
             while(rs.next()){
+                Cliente cliente = new Cliente();
                 Animal animal = new Animal();
                 animal.setIdAnimal(rs.getInt("idanimal"));
+                
+                cliente.setIdPessoa(rs.getInt("cliente_idcliente"));
+                animal.setClienteAnimal(cliente);
+                
                 animal.setNomeAnimal(rs.getString("nome_animal"));
                 animal.setDataNascimentoAnimal(rs.getString("data_nascimento_animal"));
+                animal.setEspecieAnimal(rs.getString("especie_animal"));
                 animal.setRacaAnimal(rs.getString("raca_animal"));
                 animal.setPorteAnimal(rs.getString("porte_animal"));
                 animal.setObservacaoAnimal(rs.getString("observacao_animal"));
@@ -81,7 +86,7 @@ public class AnimalDAO {
             connection.openConnection();
             stmt = connection.getConection().prepareStatement("");
             stmt.setInt(1, animal.getIdAnimal());
-            stmt.setObject(2, animal.getClienteAnimal());
+            stmt.setInt(2, animal.getClienteAnimal().getIdPessoa());
             stmt.setString(3, animal.getNomeAnimal());
             stmt.setString(4, animal.getDataNascimentoAnimal());
             stmt.setString(5, animal.getRacaAnimal());
@@ -89,7 +94,7 @@ public class AnimalDAO {
             stmt.setString(7, animal.getObservacaoAnimal());
             stmt.setString(8, animal.getSexoAnimal());
             stmt.setString(9, animal.getDataCadastroAnimal());
-            stmt.setInt(10, animal.getIndexEspecieAnimal());
+            stmt.setString(10, animal.getEspecieAnimal());
             stmt.executeUpdate();
             connection.confirm();
             return true;

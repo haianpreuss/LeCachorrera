@@ -43,7 +43,7 @@ public class CategoriaDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM categoria");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Categoria categoria = new Categoria();
