@@ -2,7 +2,6 @@ package br.edu.senai.service;
 
 import br.edu.senai.controller.ClienteController;
 import br.edu.senai.model.bean.Cliente;
-import br.edu.senai.model.bean.Funcionario;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -41,7 +40,7 @@ public class ClienteService {
     @Path("/read")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Cliente> serviceReadCliente() {
-        return clienteController.controllerReadCompleteCliente();
+        return clienteController.controllerReadCompleteClienteList();
     }
 
     @PUT

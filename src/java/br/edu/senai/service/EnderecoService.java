@@ -1,8 +1,6 @@
 package br.edu.senai.service;
 
-import br.edu.senai.controller.ClienteController;
 import br.edu.senai.controller.EnderecoController;
-import br.edu.senai.model.bean.Cliente;
 import br.edu.senai.model.bean.Endereco;
 import java.util.List;
 import javax.ws.rs.Consumes;

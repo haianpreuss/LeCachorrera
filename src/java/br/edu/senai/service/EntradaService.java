@@ -1,8 +1,6 @@
 package br.edu.senai.service;
 
-import br.edu.senai.controller.EnderecoController;
 import br.edu.senai.controller.EntradaController;
-import br.edu.senai.model.bean.Endereco;
 import br.edu.senai.model.bean.Entrada;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -13,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -40,8 +39,11 @@ public class EntradaService {
     @GET
     @Path("/read")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Entrada> serviceReadEntrada() {
-        return entradaController.controllerReadCompleteEntrada();
+    public Response serviceReadEntrada() {
+        List<Entrada> listaEntrada = entradaController.controllerReadCompleteEntrada();
+        GenericEntity<List<Entrada>> list = new GenericEntity<List<Entrada>>(listaEntrada) {
+        };
+        return Response.ok(list).build();
     }
 
     @PUT
