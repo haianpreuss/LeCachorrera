@@ -16,8 +16,7 @@ public class AnimalController {
 
     //READ
     public List<Animal> controllerReadCompleteAnimalList() {
-        //TODO code
-        return null;
+        return animalDao.daoReadCompleteAnimalList();
     }
     
     //UPDATE
