@@ -12,7 +12,7 @@ public class ConnectionFactory {
 
     Connection connection;
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String BANCO = "";
+    private static final String BANCO = "db_le_cachorrera";
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/" + BANCO;
     private static final String USER = "root";
     private static final String PASS = "";
