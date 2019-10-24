@@ -5,12 +5,13 @@ public class Animal {
     private Cliente clienteAnimal;
     private String nomeAnimal;
     private String dataNascimentoAnimal;
+    private String especieAnimal;
     private String racaAnimal;
     private String porteAnimal;
     private String observacaoAnimal;
     private String sexoAnimal;
     private String dataCadastroAnimal;
-    private Integer indexEspecieAnimal;
+    
     
     public Integer getIdAnimal() {
         return idAnimal;
@@ -20,12 +21,12 @@ public class Animal {
         this.idAnimal = idAnimal;
     }
 
-    public Integer getIndexEspecieAnimal() {
-        return indexEspecieAnimal;
+    public String getEspecieAnimal() {
+        return especieAnimal;
     }
 
-    public void setIndexEspecieAnimal(Integer indexEspecieAnimal) {
-        this.indexEspecieAnimal = indexEspecieAnimal;
+    public void setEspecieAnimal(String especieAnimal) {
+        this.especieAnimal = especieAnimal;
     }
 
     public Cliente getClienteAnimal() {
