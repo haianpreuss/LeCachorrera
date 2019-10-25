@@ -47,14 +47,14 @@ public class FornecedorDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM fornecedor");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Fornecedor fornecedor = new Fornecedor();
                 fornecedor.setIdPessoa(rs.getInt("idfornecedor"));
                 fornecedor.setRazaoSocialFornecedor(rs.getString("razao_social_fornecedor"));
                 fornecedor.setNomeFantasiaFornecedor(rs.getString("nome_fantasia_fornecedor"));
-                fornecedor.setDocumentoPessoa(rs.getString("documento_fornecedor"));
+                fornecedor.setDocumentoPessoa(rs.getString("cnpj_fornecedor"));
                 fornecedor.setIeFornecedor(rs.getString("ie_fornecedor"));
                 fornecedor.setTelefonePessoa(rs.getString("telefone_fornecedor"));
                 fornecedor.setEmailPessoa(rs.getString("email_fornecedor"));

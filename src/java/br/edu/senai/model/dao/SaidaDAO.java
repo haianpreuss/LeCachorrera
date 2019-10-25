@@ -41,17 +41,20 @@ public class SaidaDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Saida> saidas = new ArrayList<>();
+        
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM saida");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Saida saida = new Saida();
+                Funcionario funcionario = new Funcionario();
                 saida.setIdSaida(rs.getInt("idsaida"));
                 saida.setDataHoraSaida(rs.getString("data_hora_saida"));
                 saida.setTipoSaida(rs.getString("tipo_saida"));
-                saida.setFuncionarioSaida((Funcionario) rs.getObject("funcionario_idfuncionario"));
+                funcionario.setIdPessoa(rs.getInt("funcionario_idfuncionario"));
+                saida.setFuncionarioSaida(funcionario);
                 saidas.add(saida);
             }
         } catch (SQLException ex) {

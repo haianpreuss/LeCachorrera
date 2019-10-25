@@ -44,7 +44,7 @@ public class ProdutoDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM produto");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Produto produto = new Produto();

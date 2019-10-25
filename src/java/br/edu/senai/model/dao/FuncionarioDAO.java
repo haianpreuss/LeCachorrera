@@ -48,7 +48,7 @@ public class FuncionarioDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM funcionario");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Funcionario funcionario = new Funcionario();

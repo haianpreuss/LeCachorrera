@@ -44,7 +44,7 @@ public class ServicoDAO {
         
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("VIEW");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM servico");
             rs = stmt.executeQuery();
             
             while(rs.next()){
