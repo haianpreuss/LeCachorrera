@@ -16,7 +16,7 @@ public class FornecedorController {
     //READ
     public List<Fornecedor> controllerReadCompleteFornecedor(){
         //TODO requisitos
-        return null;
+        return fornecedorDao.daoReadCompleteFornecedorList();
     }
     
     //UPDATE

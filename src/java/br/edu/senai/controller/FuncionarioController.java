@@ -17,7 +17,7 @@ public class FuncionarioController {
     //READ
     public List<Funcionario> controllerReadCompleteFuncionario(){
         //TODO requisitos
-        return null;
+        return funcionarioDao.daoReadCompleteFuncionarioList();
     }
     
     //UPDATE

@@ -16,7 +16,7 @@ public class SaidaController {
     //READ
     public List<Saida> controllerReadCompleteSaida(){
         //TODO requisitos
-        return null;
+        return saidaDao.daoReadCompleteSaidaList();
     }
     
     //UPDATE
