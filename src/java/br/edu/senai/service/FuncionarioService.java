@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 @Path("/funcionario")
 public class FuncionarioService {
 
-    static FuncionarioController funcionarioController = new FuncionarioController();
+    FuncionarioController funcionarioController = new FuncionarioController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

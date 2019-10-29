@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/saida")
 public class SaidaService {
-    static SaidaController saidaController = new SaidaController();
+    SaidaController saidaController = new SaidaController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

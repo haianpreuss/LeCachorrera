@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 public class AnimalService {
 
     //Instancia do controlador
-    static AnimalController animalController = new AnimalController();
+    AnimalController animalController = new AnimalController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

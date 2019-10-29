@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/entrada")
 public class EntradaService {
-    static EntradaController entradaController = new EntradaController();
+    EntradaController entradaController = new EntradaController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

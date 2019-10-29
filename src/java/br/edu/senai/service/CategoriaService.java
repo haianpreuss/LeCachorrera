@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/categoria")
 public class CategoriaService {
-    static CategoriaController categoriaController = new CategoriaController();
+    CategoriaController categoriaController = new CategoriaController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

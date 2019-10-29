@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/ordem")
 public class OrdemService {
-    static OrdemController ordemController = new OrdemController();
+    OrdemController ordemController = new OrdemController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

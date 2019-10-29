@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 @Path("/endereco")
 public class EnderecoService {
 
-    static EnderecoController enderecoController = new EnderecoController();
+    EnderecoController enderecoController = new EnderecoController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

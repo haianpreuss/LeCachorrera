@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/produto")
 public class ProdutoService {
-    static ProdutoController produtoController = new ProdutoController();
+    ProdutoController produtoController = new ProdutoController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

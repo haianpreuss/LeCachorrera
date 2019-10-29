@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/fornecedor")
 public class FornecedorService {
-    static FornecedorController fornecedorController = new FornecedorController();
+    FornecedorController fornecedorController = new FornecedorController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

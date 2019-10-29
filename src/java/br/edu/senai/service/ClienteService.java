@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 @Path("/cliente")
 public class ClienteService {
 
-    static ClienteController clienteController = new ClienteController();
+    ClienteController clienteController = new ClienteController();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
