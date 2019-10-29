@@ -51,7 +51,7 @@ public class OrdemDAO {
         
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("SELECT *FROM ordem");
             rs = stmt.executeQuery();
             while(rs.next()){
                 Ordem ordem = new Ordem();
