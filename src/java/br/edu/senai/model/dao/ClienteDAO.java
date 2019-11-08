@@ -74,7 +74,7 @@ public class ClienteDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = connection.getConection().prepareStatement("");
+            stmt = connection.getConection().prepareStatement("CALL sp_update_cliente(?,?,?,?,?,?,?)");
             stmt.setInt(1, cliente.getIdPessoa());
             stmt.setString(2, cliente.getNomeCliente());
             stmt.setString(3, cliente.getDocumentoPessoa());
@@ -82,7 +82,6 @@ public class ClienteDAO {
             stmt.setString(5, cliente.getEmailPessoa());
             stmt.setString(6, cliente.getTipoCliente());
             stmt.setString(7, cliente.getSexoCliente());
-            stmt.setString(8, cliente.getDataCadastro());
             stmt.executeUpdate();
             connection.confirm();
             return true;

@@ -23,16 +23,15 @@ public class AnimalDAO {
         
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("CALL sp_insert_animal(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt = connection.getConection().prepareStatement("CALL sp_inserir_animal(?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, animal.getClienteAnimal().getIdPessoa());
             stmt.setString(2, animal.getNomeAnimal());
             stmt.setString(3, animal.getDataNascimentoAnimal());
-            stmt.setString(4, animal.getRacaAnimal());
-            stmt.setString(5, animal.getPorteAnimal());
-            stmt.setString(6, animal.getObservacaoAnimal());
-            stmt.setString(7, animal.getSexoAnimal());
-            stmt.setString(8, animal.getDataCadastroAnimal());
-            stmt.setString(9, animal.getEspecieAnimal());
+            stmt.setString(4, animal.getEspecieAnimal());
+            stmt.setString(5, animal.getRacaAnimal());
+            stmt.setString(6, animal.getPorteAnimal());
+            stmt.setString(7, animal.getObservacaoAnimal());
+            stmt.setString(8, animal.getSexoAnimal());
             stmt.executeUpdate();
             connection.confirm();
             return true;
@@ -84,17 +83,16 @@ public class AnimalDAO {
         
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("");
-            stmt.setInt(1, animal.getIdAnimal());
-            stmt.setInt(2, animal.getClienteAnimal().getIdPessoa());
+            stmt = connection.getConection().prepareStatement("CALL sp_update_animal(?,?,?,?,?,?,?,?,?)");
+            stmt.setInt(1, animal.getClienteAnimal().getIdPessoa());
+            stmt.setInt(2, animal.getIdAnimal());
             stmt.setString(3, animal.getNomeAnimal());
             stmt.setString(4, animal.getDataNascimentoAnimal());
-            stmt.setString(5, animal.getRacaAnimal());
-            stmt.setString(6, animal.getPorteAnimal());
-            stmt.setString(7, animal.getObservacaoAnimal());
-            stmt.setString(8, animal.getSexoAnimal());
-            stmt.setString(9, animal.getDataCadastroAnimal());
-            stmt.setString(10, animal.getEspecieAnimal());
+            stmt.setString(5, animal.getEspecieAnimal());
+            stmt.setString(6, animal.getRacaAnimal());
+            stmt.setString(7, animal.getPorteAnimal());
+            stmt.setString(8, animal.getObservacaoAnimal());
+            stmt.setString(9, animal.getSexoAnimal());
             stmt.executeUpdate();
             connection.confirm();
             return true;

@@ -22,7 +22,7 @@ public class FuncionarioDAO {
 
         try {
             connection.openConnection();
-            stmt = connection.getConection().prepareStatement("CALL sp_inserir_funcionario(?,?,?,?,?,?,?)");
+            stmt = connection.getConection().prepareStatement("CALL sp_inserir_funcionario(?,?,?,?,?,?,?,?)");
             stmt.setString(1, funcionario.getNomeFuncionario());
             stmt.setString(2, funcionario.getDocumentoPessoa());
             stmt.setString(3, funcionario.getTelefonePessoa());
@@ -30,6 +30,7 @@ public class FuncionarioDAO {
             stmt.setString(5, funcionario.getSetorFuncionario());
             stmt.setString(6, funcionario.getCargoFuncionario());
             stmt.setString(7, funcionario.getSexoFuncionario());
+            stmt.setInt(8, funcionario.getSenhaFuncionario());
             stmt.executeUpdate();
             connection.confirm();
             return true;
@@ -60,6 +61,7 @@ public class FuncionarioDAO {
                 funcionario.setSetorFuncionario(rs.getString("setor_funcionario"));
                 funcionario.setCargoFuncionario(rs.getString("cargo_funcionario"));
                 funcionario.setSexoFuncionario(rs.getString("sexo_funcionario"));
+                funcionario.setSenhaFuncionario(rs.getInt("senha_funcionario"));
                 funcionarios.add(funcionario);
             }
         } catch (SQLException ex) {
@@ -74,7 +76,8 @@ public class FuncionarioDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = connection.getConection().prepareStatement("");
+            connection.openConnection();
+            stmt = connection.getConection().prepareStatement("CALL sp_update_funcionario(?,?,?,?,?,?,?,?)");
             stmt.setInt(1, funcionario.getIdPessoa());
             stmt.setString(2, funcionario.getNomeFuncionario());
             stmt.setString(3, funcionario.getDocumentoPessoa());

@@ -73,7 +73,8 @@ public class FornecedorDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = connection.getConection().prepareStatement("");
+            connection.openConnection();
+            stmt = connection.getConection().prepareStatement("CALL sp_update_fornecedor(?,?,?,?,?,?,?)");
             stmt.setInt(1, fornecedor.getIdPessoa());
             stmt.setString(2, fornecedor.getRazaoSocialFornecedor());
             stmt.setString(3, fornecedor.getNomeFantasiaFornecedor());
@@ -81,7 +82,6 @@ public class FornecedorDAO {
             stmt.setString(5, fornecedor.getIeFornecedor());
             stmt.setString(6, fornecedor.getTelefonePessoa());
             stmt.setString(7, fornecedor.getEmailPessoa());
-            stmt.setString(8, fornecedor.getDataCadastroFornecedor());
             stmt.executeUpdate();
             connection.confirm();
             return true;
