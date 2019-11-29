@@ -31,4 +31,13 @@ public class FuncionarioController {
         //TODO requisitos
         return funcionarioDao.daoDeleteFuncionario(id);
     }
+    
+    public boolean controllerCheckLoginFuncionario(int senha){
+        for(Funcionario funcionario: funcionarioDao.daoReadCompleteFuncionarioList()){
+            if(funcionario.getSenhaFuncionario() == senha){
+                return true;
+            }
+        }
+        return false;
+    }
 }
