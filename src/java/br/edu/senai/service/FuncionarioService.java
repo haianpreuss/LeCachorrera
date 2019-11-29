@@ -36,6 +36,14 @@ public class FuncionarioService {
         }
     }
     
+    @POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String serviceCheckLoginFuncionario(Funcionario funcionario){
+        return String.valueOf(funcionarioController.controllerCheckLoginFuncionario(funcionario.getSenhaFuncionario()));
+    }
+    
     @GET
     @Path("/read")
     @Produces(MediaType.APPLICATION_JSON)
